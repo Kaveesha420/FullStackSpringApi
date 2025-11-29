@@ -6,6 +6,7 @@ import edu.icet.repositry.CustomerRepositry;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -42,5 +43,20 @@ public class CustomerService {
                 customer.getAddress(),
                 customer.getNic()
         );
+    }
+
+    public List<CustomerDto> getAllCustomer() {
+      List<Customer> customers = customerRepositry.findAll();
+      List<CustomerDto> customerDtos = new ArrayList<>();
+      for(Customer customer : customers){
+          customerDtos.add(new CustomerDto(
+                  customer.getId(),
+                  customer.getName(),
+                  customer.getAge(),
+                  customer.getAddress(),
+                  customer.getNic()
+          ));
+      }
+    return customerDtos;
     }
 }
