@@ -59,4 +59,8 @@ public class CustomerService {
       }
     return customerDtos;
     }
+
+    public void deleteCustomer(String id) {
+        customerRepositry.deleteById(id);
+    }
 }
