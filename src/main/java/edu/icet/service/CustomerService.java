@@ -63,4 +63,21 @@ public class CustomerService {
     public void deleteCustomer(String id) {
         customerRepositry.deleteById(id);
     }
+
+    public String updateCustomer(CustomerDto customerDto, String id) {
+        List<Customer> customers = customerRepositry.findAll();
+        for (Customer customer:customers){
+            if (customer.getId().equals(id)){
+                customerRepositry.save(new Customer(
+                        id,
+                        customerDto.getName(),
+                        customerDto.getAge(),
+                        customerDto.getAddress(),
+                        customerDto.getNic()
+                ));
+                return "Customer Added Successfully";
+            }
+        }
+        return "Customer Doesn't Exist...!";
+    }
 }
