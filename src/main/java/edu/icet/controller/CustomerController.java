@@ -20,10 +20,9 @@ public class CustomerController {
         return customerService.addCustomer(customerDto);
     }
 
-//    @GetMapping("/searchCustomer/{id}")
-//    public CustomerDto searchCustomer(@PathVariable("id")String id){
-//        return customerService.searchCustomer(id);
-//    }
-
+    @GetMapping("/searchCustomer/{id}")
+    public CustomerDto searchCustomer(@PathVariable("id")String id){
+        return customerService.searchCustomer(id);
+    }
 
 }

@@ -33,7 +33,14 @@ public class CustomerService {
         return "Customer added Successfully";
     }
 
-//    public CustomerDto searchCustomer(String id) {
-//        return null;
-//    }
+    public CustomerDto searchCustomer(String id) {
+        Customer customer = customerRepositry.findById(id).orElse(null);
+        return new CustomerDto(
+                customer.getId(),
+                customer.getName(),
+                customer.getAge(),
+                customer.getAddress(),
+                customer.getNic()
+        );
+    }
 }
