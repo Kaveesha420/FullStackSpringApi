@@ -33,7 +33,7 @@ public class ProductService {
                 productDto.getUnitPrice()
         );
         productRepositry.save(product);
-        return "Customer added Successfuly";
+        return "Product added Successfuly";
     }
 
     public ProductDto searchProduct(String id) {
@@ -66,5 +66,22 @@ public class ProductService {
     public String deleteProduct(String id) {
         productRepositry.deleteById(id);
         return "Product Deleted Successfully";
+    }
+
+    public String updateProduct(ProductDto productDto, String id) {
+        List<Product> products = productRepositry.findAll();
+        for (Product product:products){
+            if (product.getId().equals(id)){
+                productRepositry.save(new Product(
+                        id,
+                        productDto.getName(),
+                        productDto.getDescription(),
+                        productDto.getQty(),
+                        productDto.getUnitPrice()
+                ));
+                return "Product Updated Successfully";
+            }
+        }
+        return "Product Doesn't Exist";
     }
 }
