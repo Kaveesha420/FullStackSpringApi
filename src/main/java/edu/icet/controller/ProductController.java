@@ -5,6 +5,8 @@ import edu.icet.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("product")
 @RequiredArgsConstructor
@@ -19,5 +21,10 @@ public class ProductController {
     @GetMapping("searchProduct/{id}")
     public ProductDto searchProduct(@PathVariable String id){
         return productService.searchProduct(id);
+    }
+
+    @GetMapping("getAllProduct")
+    public List<ProductDto> getAllProduct(){
+        return productService.getAllProduct();
     }
 }

@@ -7,6 +7,7 @@ import edu.icet.repositry.ProductRepositry;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,5 +46,21 @@ public class ProductService {
                 product.getQty(),
                 product.getUnitPrice()
         );
+    }
+
+    public List<ProductDto> getAllProduct() {
+        List<Product> products = productRepositry.findAll();
+        List<ProductDto> productDtos = new ArrayList<>();
+
+        for (Product product:products){
+            productDtos.add(new ProductDto(
+                    product.getId(),
+                    product.getName(),
+                    product.getDescription(),
+                    product.getQty(),
+                    product.getUnitPrice()
+            ));
+        }
+        return productDtos;
     }
 }
