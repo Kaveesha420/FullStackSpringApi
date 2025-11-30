@@ -35,4 +35,15 @@ public class ProductService {
         productRepositry.save(product);
         return "Customer added Successfuly";
     }
+
+    public ProductDto searchProduct(String id) {
+        Product product = productRepositry.findById(id).orElse(null);
+        return new ProductDto(
+                product.getId(),
+                product.getName(),
+                product.getDescription(),
+                product.getQty(),
+                product.getUnitPrice()
+        );
+    }
 }
