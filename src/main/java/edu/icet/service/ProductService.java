@@ -2,7 +2,6 @@ package edu.icet.service;
 
 import edu.icet.model.Dto.ProductDto;
 import edu.icet.model.Entiti.Product;
-import edu.icet.repositry.CustomerRepositry;
 import edu.icet.repositry.ProductRepositry;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -62,5 +61,10 @@ public class ProductService {
             ));
         }
         return productDtos;
+    }
+
+    public String deleteProduct(String id) {
+        productRepositry.deleteById(id);
+        return "Product Deleted Successfully";
     }
 }

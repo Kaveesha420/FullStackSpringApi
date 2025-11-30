@@ -27,4 +27,9 @@ public class ProductController {
     public List<ProductDto> getAllProduct(){
         return productService.getAllProduct();
     }
+
+    @DeleteMapping("deleteProduct/{id}")
+    public String deleteProduct(@PathVariable String id){
+        return productService.deleteProduct(id);
+    }
 }
