@@ -2,6 +2,8 @@ package edu.icet.model.Dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,5 +14,7 @@ public class OrderDto {
     private String orderDetailsId;
     private String customerId;
     private String productId;
-    private String qty;
+    private int qty;
+    private LocalDate localDate;
+    private Double totalPrice;
 }

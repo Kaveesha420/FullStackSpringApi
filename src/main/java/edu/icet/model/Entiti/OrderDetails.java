@@ -1,8 +1,6 @@
 package edu.icet.model.Entiti;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -13,10 +11,14 @@ import lombok.*;
 @Entity
 public class OrderDetails {
     @Id
-    @Column(name = "order_Details")
+    @Column(name = "order_Details_Id")
     private String orderDetailsId;
-    private String orderId;
-    private String productId;
-    private String qty;
+    @ManyToOne
+    @JoinColumn(name = "order_Id")
+    private Orders orderId;
+    @ManyToOne
+    @JoinColumn(name = "product_Id")
+    private Product productId;
+    private int qty;
 
 }
