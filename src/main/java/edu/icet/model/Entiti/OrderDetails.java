@@ -7,16 +7,16 @@ import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Entity
-public class Product {
+public class OrderDetails {
     @Id
-    @Column(name = "product_Id")
+    @Column(name = "order_Details")
+    private String orderDetailsId;
+    private String orderId;
     private String productId;
-    private String name;
-    private String description;
-    private int qty;
-    private Double unitPrice;
+    private String qty;
+
 }
