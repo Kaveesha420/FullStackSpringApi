@@ -20,7 +20,7 @@ public class ProductService {
         int genIntId = 1;
 
         for (Product product:products){
-            if (product.getId().equals(genarateId)){
+            if (product.getProductId().equals(genarateId)){
                 genIntId++;
                 genarateId=String.format("P%03d",genIntId);
             }else{break;}
@@ -39,7 +39,7 @@ public class ProductService {
     public ProductDto searchProduct(String id) {
         Product product = productRepositry.findById(id).orElse(null);
         return new ProductDto(
-                product.getId(),
+                product.getProductId(),
                 product.getName(),
                 product.getDescription(),
                 product.getQty(),
@@ -53,7 +53,7 @@ public class ProductService {
 
         for (Product product:products){
             productDtos.add(new ProductDto(
-                    product.getId(),
+                    product.getProductId(),
                     product.getName(),
                     product.getDescription(),
                     product.getQty(),
@@ -71,7 +71,7 @@ public class ProductService {
     public String updateProduct(ProductDto productDto, String id) {
         List<Product> products = productRepositry.findAll();
         for (Product product:products){
-            if (product.getId().equals(id)){
+            if (product.getProductId().equals(id)){
                 productRepositry.save(new Product(
                         id,
                         productDto.getName(),
